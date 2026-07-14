@@ -1,0 +1,19 @@
+services:
+  php:
+    build:
+      context: .
+      target: php
+    networks: [laravel]
+
+
+  nginx:
+    build:
+      context: .
+      target: nginx
+    ports:
+      - "8080:80"
+    depends_on: [php]
+    networks: [laravel]
+
+networks:
+  laravel:
